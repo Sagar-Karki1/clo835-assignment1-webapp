@@ -28,11 +28,11 @@ jobs:
     - name: Build, tag, and push App image
       run: |
         docker build -t app -f Dockerfile .
-        docker tag app:latest ${{ secrets.APP_ECR_URI }}:latest
-        docker push ${{ secrets.APP_ECR_URI }}:latest
+        docker tag app:latest ${{ secrets.APP_ECR_URI }}:v2
+        docker push ${{ secrets.APP_ECR_URI }}:v2
 
     - name: Build, tag, and push MySQL image
       run: |
         docker build -t mysql -f Dockerfile_mysql .
-        docker tag mysql:latest ${{ secrets.MYSQL_ECR_URI }}:latest
-        docker push ${{ secrets.MYSQL_ECR_URI }}:latest
+        docker tag mysql:latest ${{ secrets.MYSQL_ECR_URI }}:v2
+        docker push ${{ secrets.MYSQL_ECR_URI }}:v2
