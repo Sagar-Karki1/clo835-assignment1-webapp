@@ -19,13 +19,13 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v2
-    - name: Build, tag, and push App image
+    - name: Build, tag, and push App image (v2)
       run: |
         docker build -t app ./app
-        docker tag app:latest ${{ secrets.APP_ECR_URI }}:latest
-        docker push ${{ secrets.APP_ECR_URI }}:latest
+        docker tag app:latest ${{ secrets.APP_ECR_URI }}:v2
+        docker push ${{ secrets.APP_ECR_URI }}:v2
     - name: Build, tag, and push MySQL image
       run: |
         docker build -t mysql ./mysql
-        docker tag mysql:latest ${{ secrets.MYSQL_ECR_URI }}:latest
-        docker push ${{ secrets.MYSQL_ECR_URI }}:latest
+        docker tag mysql:latest ${{ secrets.MYSQL_ECR_URI }}:v2
+        docker push ${{ secrets.MYSQL_ECR_URI }}:v2
